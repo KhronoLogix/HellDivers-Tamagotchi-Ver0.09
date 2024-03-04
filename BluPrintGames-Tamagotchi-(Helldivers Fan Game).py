@@ -3,7 +3,7 @@
 #BugTester: Hanahaki
 
 import random
-class Tomagotchi(object):  
+class Tamagotchi(object):  
     #what he is who he feels like
     def __init__(self, name, tired = 10, hunger = 10, boredom = 10, thirst = 10, hp = 20, immortal = 0, ammoPrim = 8, ammoSecon = 4, ammoHeavy = 2):
         self.name = name
