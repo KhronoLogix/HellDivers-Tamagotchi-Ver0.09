@@ -2,6 +2,7 @@
 #LeadDev: Logix
 #BugTester: Hanahaki
 
+#import for random because some things require RNG
 import random
 class Tamagotchi(object):  
     #what he is who he feels like
@@ -24,9 +25,12 @@ class Tamagotchi(object):
         self.tired = self.tired - 1
         self.thirst = self.thirst - 1
     
+    #the most / least complext part of all this is just having him have a talk with you
     def talk(self):
+        #starts the loop
         talkChoice = 1
         while talkChoice == 1:
+            #display :DDDD
             print('''
                  What do you want to talk to me about?
                   ╔═══════════════════════════════════╗
@@ -49,10 +53,13 @@ class Tamagotchi(object):
                   ║ 0: Never Mind                     ║
                   ╚═══════════════════════════════════╝
                   ''')
+            #interaction
             talkChoice = input("I want to talk about: ")
             if talkChoice == "1":
+                #the most simple part :C
                 print(f"im feeling {self.mood}")
             elif talkChoice == "2":
+                #Checks his / her hunger and can tell you how horrible you are at taking care of them
                 if self.hun == 1 or 2:
                     print("im not that hungry right now but im sure i could use a bite later!")
                 elif self.hun == 3 or 4:
@@ -62,6 +69,7 @@ class Tamagotchi(object):
                 elif self.hun >= 7:
                     print("im starving to death...")
             elif talkChoice == "3":
+                #same thing as 2 but for thirst
                 if self.thirst == 1 or 2:
                     print("im not thirsty right now :D")
                 elif self.thirst == 3 or 4:
@@ -71,6 +79,7 @@ class Tamagotchi(object):
                 elif self.thirst >= 7:
                     print("sweet liberty give me water...")
             elif talkChoice == "4":
+                #the 2 in one! both bore and sleeby are covered here, yes i spelled sleepy as sleeby
                 if self.bore == 1 or 2:
                     print("im not bored, i wouldnt mind a quick game though!")
                 elif self.bore == 3 or 4:
@@ -88,6 +97,7 @@ class Tamagotchi(object):
                 elif self.tired >= 7:
                     print("please let me sleep...") 
             elif talkChoice == "5":
+                #the HP check is nice, since yknow your helldiver needs health
                 print(f"my hp is {self.hp}/20")
                 if self.hp == 20:
                     print("im good as a new helldiver!")
@@ -98,12 +108,14 @@ class Tamagotchi(object):
                 elif self.hp >= 5:
                     print("I NEED A STIM.")
             elif talkChoice == "6":
+                #kinda useless rn
                 print(f'''
                       i have {self.ammoPrim}/8 Primary Mags
                       i have {self.ammoSecon}/4 Secondary Mags
                       i have {self.ammoHev}/2 Stratagem Mags
                       ''')
             elif talkChoice == "7":
+                #yay random! ill prob do something with this later 
                 randomPhrase = random.randint(1,5)
                 if randomPhrase == 1:
                     print("Liberty is perfection.")
@@ -116,7 +128,7 @@ class Tamagotchi(object):
                 elif randomPhrase == 5:
                     print("MY LIFE FOR SUPER EARTH!")
             elif talkChoice == "8":
-                lifeRNG = random.randint(1,20)
+                #difficulty is how likely they are to die baseline
                 diff = input('''
                 Dont forget to choose your difficulty
                 ╔═══════════════════════════════════╗
@@ -141,6 +153,7 @@ class Tamagotchi(object):
                 ║ 0: I dont want to dive anymore    ║
                 ╚═══════════════════════════════════╝
                 ''')
+                
                 #The RNG behind the difficulty
                 trivialDive = random.randint(1,4)
                 easyDive = random.randint(1,10)
@@ -152,6 +165,7 @@ class Tamagotchi(object):
                 impossibleDive = random.randint(15,20)
                 hellDive = random.randint(18,30)
 
+                #the horrors of if statements.
                 if diff == "1":
                     print(f"My name is {self.name} im diving on tivial, im Extremely likely to come back. i am a helldiver and i understand i may die. FOR DEMOCROCY!")
                     self.hp -= trivialDive
@@ -222,6 +236,7 @@ class Tamagotchi(object):
                 else:
                     print("\nSorry ",diff," isnt a valid option")
             elif talkChoice == "0":
+                #very nice talk, you monster.
                 print("thanks for talking to me!")
                 talkChoice = 0
             else:
@@ -395,26 +410,30 @@ class Tamagotchi(object):
             self.immortal = 1
         elif devInput == "3":
             print('''
-                  Hi, my name is Khronologix
-                  This is the most bear bones Tomagotchi for my current fav game, Helldivers
-                  its a love letter to the dev team i wont be entirely finished for a while
+                Hi, my name is Khronologix
+                This is the most bear bones Tomagotchi for my current fav game, Helldivers
+                its a love letter to the dev team i wont be entirely finished for a while
+                
+                Update 0.01 - 0.07
+                so many functions....
+                Such as Hunger, Thirst, Ammo of all types (has no use now), Bored.
+                Update 0.08
+                Added Death
+                Added Immortality
+                
+                Update 0.09
+                Added Sleep 
+                fixed so many bugs with my good friend and Co-Founder Hanahaki
+                
+                Update 0.1
+                Helldive for
+                  Samples
+                  upgrades:
+                    Hp max up
+                    Equipment
+                    Stratigems increase likelyhood of survival
+                ???
                   
-                  Update 0.01 - 0.07
-                  so many functions....
-                  Such as Hunger, Thirst, Ammo of all types (has no use now), Bored.
-                  Update 0.08
-                  Added Death
-                  Added Immortality
-                  
-                  Update 0.09
-                  Added Sleep 
-                  fixed so many bugs with my good friend and Co-Founder Hanahaki
-                  
-                  Next Update 0.1
-                  wait for helldiver dev to say its ok to make this a thing THEN
-                  Add a reason to helldive, Add equipment, Add bleeding / other status effects
-                  upgrade living status overall add more features.
-                  amazing passion project
                   ''')
         else:
             print("why are you in the dev section \nif you dont even know how to type a single number?")
@@ -441,7 +460,7 @@ def main():
 ╚═╝░░╚═╝╚══════╝╚══════╝╚══════╝╚═════╝░╚═╝░░░╚═╝░░░╚══════╝╚═╝░░╚═╝
           ''')
     
-    crit = Tomagotchi(critName)
+    crit = Tamagotchi(critName)
     choice = None
     while choice != 0:
         print('''
@@ -465,7 +484,8 @@ def main():
               ''')
 
         choice = input("Choice: ")
-        
+        #hours wasted figuring out that i need to ad break statements.
+        #12 hours
         while crit.dead != 1:
             if choice == "1":
                 crit.talk()
